@@ -1,8 +1,11 @@
 package io.github.ratismal.japanesequiz;
 
 import io.github.ratismal.japanesequiz.draw.RenderHelper;
+import io.github.ratismal.japanesequiz.handler.MouseHandler;
 import io.github.ratismal.japanesequiz.windows.InstanceSwitcher;
 import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
@@ -20,6 +23,7 @@ public class MainWindow {
 
     private RenderHelper rh;
     private InstanceSwitcher instanceSwitcher;
+    private MouseHandler mouse;
 
     public MainWindow(RenderHelper renderHelper, InstanceSwitcher instanceSwitcher) {
 
@@ -29,14 +33,14 @@ public class MainWindow {
     }
 
     public void start() {
-
+        mouse = new MouseHandler();
         initGL(1280, 720);
         rh.initFont("Courier New", Font.BOLD, 48);
         while (true) {
             GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 
             instanceSwitcher.renderInstance();
-
+            pollInput();
             Display.update();
             Display.sync(100);
 
@@ -94,7 +98,17 @@ public class MainWindow {
         glMatrixMode(GL11.GL_MODELVIEW);
     }
 
+    public void pollInput() {
 
+        if (Mouse.isButtonDown(0)) {
+            mouse.setX(Mouse.getX());
+            mouse.setY(Mouse.getY());
+
+            //System.out.println("MOUSE DOWN @ X: " + x + " Y: " + y);
+            instanceSwitcher.mouseInput(mouse);
+        }
+
+    }
 
 
 }

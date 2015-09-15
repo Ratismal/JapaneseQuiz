@@ -5,21 +5,7 @@ package io.github.ratismal.japanesequiz;
  */
 
 import io.github.ratismal.japanesequiz.draw.RenderHelper;
-import io.github.ratismal.japanesequiz.windows.InstanceMainMenu;
 import io.github.ratismal.japanesequiz.windows.InstanceSwitcher;
-import org.lwjgl.LWJGLException;
-import org.lwjgl.opengl.Display;
-import org.lwjgl.opengl.DisplayMode;
-import org.newdawn.slick.opengl.Texture;
-import org.newdawn.slick.opengl.TextureLoader;
-import org.newdawn.slick.util.ResourceLoader;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-import static org.lwjgl.opengl.GL11.*;
 
 /**
  * If this application shows texture blank and responsive window

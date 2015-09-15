@@ -88,7 +88,7 @@ public class RenderHelper {
         GL11.glTexCoord2f(0, 1);
         GL11.glVertex2f(x, y + texture.getTextureHeight());
         GL11.glEnd();
-
+        //System.out.println(texture.getTextureWidth());
         renderString(text, x + texture.getTextureWidth()/2 - font.getWidth(text)/2, y + texture.getTextureHeight()/2 - font.getHeight(text)/2, colour);
 
     }
