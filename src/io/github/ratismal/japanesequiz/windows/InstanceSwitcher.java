@@ -4,6 +4,9 @@ import io.github.ratismal.japanesequiz.draw.RenderHelper;
 import io.github.ratismal.japanesequiz.handler.MouseHandler;
 import io.github.ratismal.japanesequiz.windows.instances.InstanceMainMenu;
 import io.github.ratismal.japanesequiz.windows.instances.InstanceOptionMenu;
+import org.lwjgl.opengl.Display;
+
+import static org.lwjgl.opengl.GL11.*;
 
 /**
  * Created by Ratismal on 2015-09-15.
@@ -23,6 +26,8 @@ public class InstanceSwitcher {
     }
 
     public void renderInstance() {
+        glViewport(0, 0, Display.getWidth(), Display.getHeight());
+        rh.renderBackground("gui/background");
         switch(instance) {
             case 0:
                 mainMenu.render();
@@ -34,6 +39,8 @@ public class InstanceSwitcher {
                 mainMenu.render();
                 break;
         }
+        glPopMatrix();
+        glLoadIdentity();
     }
 
     public void mouseInput(MouseHandler mouse) {
@@ -52,6 +59,6 @@ public class InstanceSwitcher {
 
     public int getInstance() { return instance; }
 
-    public void setInstance(int instance) { this.instance = instance; }
+    public static void setInstance(int newInstance) { instance = newInstance; }
 
 }

@@ -1,5 +1,6 @@
 package io.github.ratismal.japanesequiz.draw;
 
+import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.*;
 import org.newdawn.slick.opengl.Texture;
@@ -32,6 +33,19 @@ public class RenderHelper {
     public void initFont(String resource, int style, int size ) {
         Font awtFont = new Font(resource, style, size);
         font = new TrueTypeFont(awtFont, false);
+    }
+
+    public void renderBackground(String resource) {
+        org.newdawn.slick.Color.white.bind();
+        initTexture(resource);
+        texture.bind();
+
+        GL11.glBegin(GL11.GL_QUADS);
+        GL11.glTexCoord2f(0f,0f); GL11.glVertex2f(0,0);
+        GL11.glTexCoord2f(1f,0f); GL11.glVertex2f(Display.getWidth(),0);
+        GL11.glTexCoord2f(1f,1f); GL11.glVertex2f(Display.getWidth(),Display.getHeight());
+        GL11.glTexCoord2f(0f,1f); GL11.glVertex2f(0, Display.getHeight());
+        GL11.glEnd();
     }
 
     public void renderQuad(String resource, int x, int y) {

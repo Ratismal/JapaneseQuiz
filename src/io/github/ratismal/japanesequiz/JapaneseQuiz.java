@@ -7,12 +7,6 @@ package io.github.ratismal.japanesequiz;
 import io.github.ratismal.japanesequiz.draw.RenderHelper;
 import io.github.ratismal.japanesequiz.windows.InstanceSwitcher;
 
-/**
- * If this application shows texture blank and responsive window
- * and doesn't throw any errors, you know you have installed lwjgl
- * correctly.
- * @author Oskar Veerhoek
- */
 public class JapaneseQuiz {
 
     public static void main(String[] argv) {

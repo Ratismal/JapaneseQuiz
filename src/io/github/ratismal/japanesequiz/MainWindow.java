@@ -100,14 +100,28 @@ public class MainWindow {
 
     public void pollInput() {
 
+        while (Mouse.next()) {
+            if (Mouse.getEventButtonState()) {
+                if (Mouse.getEventButton() == 0) {
+                    if (Mouse.isButtonDown(0)) {
+                        mouse.setX(Mouse.getX());
+                        mouse.setY(Display.getHeight() - Mouse.getY());
+
+                        //System.out.println("MOUSE DOWN @ X: " + Mouse.getX() + " Y: " + Mouse.getY());
+                        instanceSwitcher.mouseInput(mouse);
+                    }
+                }
+            }
+        }
+/*
         if (Mouse.isButtonDown(0)) {
             mouse.setX(Mouse.getX());
-            mouse.setY(Mouse.getY());
+            mouse.setY(Display.getHeight() - Mouse.getY());
 
             //System.out.println("MOUSE DOWN @ X: " + x + " Y: " + y);
             instanceSwitcher.mouseInput(mouse);
         }
-
+*/
     }
 
 
